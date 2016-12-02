@@ -3,4 +3,9 @@ iterate over the respond and parse it with some parser.
 match with accepting criteria
 save the result in db
 apply the user rules on output from step 3 and if rules agree then show as suggestion.
+
+
+
+2-dec
+1. read the properties file(isin and number of days) and the fetch the data from quandl and show in console.
   
