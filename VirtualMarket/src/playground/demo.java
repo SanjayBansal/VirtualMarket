@@ -27,7 +27,7 @@ public class demo {
 
 			String output = response.getEntity(String.class);
 
-			System.out.println("Output from Server .... \n");
+			System.out.println("Output from Server .... for SBI\n");
 			System.out.println(output);
 			
 			
