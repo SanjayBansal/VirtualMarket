@@ -1,12 +1,14 @@
 package Parser;
 
 import java.io.File;
+import java.net.URL;
 import java.util.List;
 
 import javax.security.sasl.SaslException;
 
 import org.apache.log4j.Logger;
 import org.dom4j.Document;
+import org.dom4j.DocumentException;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
@@ -28,5 +30,17 @@ public class Parser {
 		}
 		return nodes;
 
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Node> parseURL(URL httpsURL) {
+		try{
+		SAXReader reader = new SAXReader();
+		Document document = reader.read(httpsURL);
+		nodes = document.content();
+		}catch(DocumentException exc){
+			exc.getMessage();
+		}
+		return nodes;
 	}
 }

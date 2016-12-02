@@ -1,59 +1,69 @@
 package Entity;
-import java.math.BigDecimal;
-import java.util.Date;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Stock {
+	
 	private String name;
-	private double high;
-	private double low;
-	private double close;
-	private BigDecimal volumn;
-	private BigDecimal totalTradedQty;
-	private double open;
-	private Date date;
-	private double last;
+	private String date;
+	private String open;
+	private String high;
+	private String low;
+	private String last;
+	private String close;
+	private String totalTradedQty;
+	private String volumn;
+	
 	
 	
 
 
-	public Stock(String name, double high, double low, double close, BigDecimal volumn, BigDecimal totalTradedQty,
-			double open, Date date, double last) {
+	public Stock(String name, String date, String open, String high, String low, String last, String close,
+			String totalTradedQty, String volumn) {
+		super();
 		this.name = name;
+		this.date = date;
+		this.open = open;
 		this.high = high;
 		this.low = low;
-		this.close = close;
-		this.volumn = volumn;
-		this.totalTradedQty = totalTradedQty;
-		this.open = open;
-		this.date = date;
 		this.last = last;
+		this.close = close;
+		this.totalTradedQty = totalTradedQty;
+		this.volumn = volumn;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public BigDecimal getTotalTradedQty() {
+	public String getTotalTradedQty() {
 		return totalTradedQty;
 	}
 
-	public void setTotalTradedQty(BigDecimal totalTradedQty) {
+	public void setTotalTradedQty(String totalTradedQty) {
 		this.totalTradedQty = totalTradedQty;
 	}
 
-	public Date getDate() {
+	@Override
+	public String toString() {
+		return "Stock [name=" + name + ", high=" + high + ", low=" + low + ", close=" + close + ", volumn=" + volumn
+				+ ", totalTradedQty=" + totalTradedQty + ", open=" + open + ", String=" + date + ", last=" + last + "]";
+	}
+
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
-	public double getLast() {
+	public String getLast() {
 		return last;
 	}
 
-	public void setLast(double last) {
+	public void setLast(String last) {
 		this.last = last;
 	}
 
@@ -61,43 +71,43 @@ public class Stock {
 		this.name = name;
 	}
 
-	public double getHigh() {
+	public String getHigh() {
 		return high;
 	}
 
-	public void setHigh(double high) {
+	public void setHigh(String high) {
 		this.high = high;
 	}
 
-	public double getLow() {
+	public String getLow() {
 		return low;
 	}
 
-	public void setLow(double low) {
+	public void setLow(String low) {
 		this.low = low;
 	}
 
-	public double getClose() {
+	public String getClose() {
 		return close;
 	}
 
-	public void setClose(double close) {
+	public void setClose(String close) {
 		this.close = close;
 	}
 
-	public BigDecimal getVolumn() {
+	public String getVolumn() {
 		return volumn;
 	}
 
-	public void setVolumn(BigDecimal volumn) {
+	public void setVolumn(String volumn) {
 		this.volumn = volumn;
 	}
 
-	public double getOpen() {
+	public String getOpen() {
 		return open;
 	}
 
-	public void setOpen(double open) {
+	public void setOpen(String open) {
 		this.open = open;
 	}
 	
