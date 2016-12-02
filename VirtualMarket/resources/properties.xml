@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<quandlKey>zar1auaezbovmzFow_kB</quandlKey>
+	<quandlURL>https://www.quandl.com/api/v3/datasets</quandlURL>
+	<stocks>
+		<script-name name="SBIN" exchange="NSE">
+			<column-names type="array">
+				<column-name>Date</column-name>
+				<column-name>Open</column-name>
+				<column-name>High</column-name>
+				<column-name>Low</column-name>
+				<column-name>Last</column-name>
+				<column-name>Close</column-name>
+				<column-name>TotalTradeQuantity</column-name>
+				<column-name>Turnover</column-name>
+			</column-names>
+			<noOfDays>50</noOfDays>
+		</script-name>
+	</stocks>
+</dataset>

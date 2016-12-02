@@ -1,0 +1,32 @@
+package Parser;
+
+import java.io.File;
+import java.util.List;
+
+import javax.security.sasl.SaslException;
+
+import org.apache.log4j.Logger;
+import org.dom4j.Document;
+import org.dom4j.Node;
+import org.dom4j.io.SAXReader;
+
+public class Parser {
+	final static Logger logger = Logger.getLogger(Parser.class);
+	List<Node>nodes = null;
+
+	@SuppressWarnings("unchecked")
+	public List<Node> parsePropertyFile(String propFile) {
+		try {
+			File inputFile = new File(propFile);
+			SAXReader reader = new SAXReader();
+			Document document = reader.read(inputFile);
+			logger.info("reading file..");
+			nodes = document.selectNodes("/dataset/stocks/script-name");
+		} catch (Exception exc) {
+			System.out.println(exc.getMessage());
+			logger.error("unable to parse propFile");
+		}
+		return nodes;
+
+	}
+}
