@@ -1,0 +1,21 @@
+Rules::
+
+1. find out  which stock have  price range between {::}
+2. up and down price from open price  should have some movements
+
+
+
+
+
+
+computation::
+1. should show the expected movements
+2. Filter out stocks which follow user defind rules and show the the buy/sell call
+3. take a logical date and compare with historical data.
+4. end of activity should run at the end of day and save data to disk
+
+
+
+
+
+

@@ -1,0 +1,6 @@
+fetch the rom web services(rest/soap)
+iterate over the respond and parse it with some parser.
+match with accepting criteria
+save the result in db
+apply the user rules on output from step 3 and if rules agree then show as suggestion.
+  
