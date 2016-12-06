@@ -8,4 +8,13 @@ apply the user rules on output from step 3 and if rules agree then show as sugge
 
 2-dec
 1. read the properties file(isin and number of days) and the fetch the data from quandl and show in console.
+
+5-Dec
+1.fetch the number of days from property file
+2.save the property in pojo
+3.save the historical output to db
+4.fetch the real time data and parse that in-memory(ehcache)
+
+
+
   

@@ -23,7 +23,7 @@ public class Parser {
 			SAXReader reader = new SAXReader();
 			Document document = reader.read(inputFile);
 			logger.info("reading file..");
-			nodes = document.selectNodes("/dataset/stocks/script-name");
+			nodes = document.content();
 		} catch (Exception exc) {
 			System.out.println(exc.getMessage());
 			logger.error("unable to parse propFile");

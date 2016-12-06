@@ -1,19 +1,45 @@
 package Entity;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "sbi")
 public class Stock {
 	
+	@Column(name = "name")
 	private String name;
+	
+	@Id
+	@Column(name = "date")
 	private String date;
+	
+	
+	@Column(name = "open")
 	private String open;
+	
+	@Column(name = "high")
 	private String high;
+	
+	@Column(name = "low")
 	private String low;
+	
+	@Column(name = "last")
 	private String last;
+	
+	@Column(name = "close")
 	private String close;
+	
+	@Column(name = "totalTradedQty")
 	private String totalTradedQty;
+	
+	@Column(name = "volumn")
 	private String volumn;
+	
+	
 	
 	
 	
@@ -48,7 +74,7 @@ public class Stock {
 	@Override
 	public String toString() {
 		return "Stock [name=" + name + ", high=" + high + ", low=" + low + ", close=" + close + ", volumn=" + volumn
-				+ ", totalTradedQty=" + totalTradedQty + ", open=" + open + ", String=" + date + ", last=" + last + "]";
+				+ ", totalTradedQty=" + totalTradedQty + ", open=" + open + ", date=" + date + ", last=" + last + "]";
 	}
 
 	public String getDate() {

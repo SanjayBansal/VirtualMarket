@@ -10,16 +10,17 @@ import org.dom4j.Node;
 
 import Entity.Stock;
 import Parser.Parser;
+import persistence.HibernateConfiguration;
 
 public class demo {
 
 	public static void main(String[] args) throws IOException, DocumentException {
-		String httpsURL = "https://www.quandl.com/api/v3/datasets/NSE/SBIN.xml?start_date="+(todaydaye-50)+"&end_date="+(todaydate-1);
+		String httpsURL = "https://www.quandl.com/api/v3/datasets/NSE/SBIN.xml?start_date="+"2016-06-01"+"&end_date="+"2016-12-06";
 		URL url = new URL(httpsURL);
 		Parser parser = new Parser();
 		List<Node> nodes = parser.parsePropertyFile("resources/properties.xml");
 		for (Node node : nodes) {
-			System.out.println(node.getName());
+			System.out.println("Node name" + node.getName());
 			System.out.println("\nname of stock :" + node.valueOf("@name"));
 			System.out.println("Exchange name : " + node.valueOf("@exchange"));
 			List<Node> columns = node.selectNodes("./column-names/column-name");
@@ -28,6 +29,9 @@ public class demo {
 			}
 		}
 		List<Node> quandlResponse = parser.parseURL(url);
+		HibernateConfiguration config = new HibernateConfiguration();
+		config.initHibernate();
+		config.getSession().beginTransaction();
 		for (Node node : quandlResponse) {
 			Node data = node.selectSingleNode("./dataset/data");
 			List<Node> stockDatumList=data.selectNodes("./datum");
@@ -43,9 +47,13 @@ public class demo {
 						datumDetailItems.get(5).getStringValue(),
 						datumDetailItems.get(6).getStringValue(),
 						datumDetailItems.get(7).getStringValue());
-				System.out.println(stock.toString());
+					
+				config.getSession().save(stock);
+				
 					
 			}
+			config.getSession().getTransaction().commit();
+			config.getFactory().close();
 			
 		}
 
