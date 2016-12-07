@@ -22,11 +22,11 @@ public class Parser {
 			File inputFile = new File(propFile);
 			SAXReader reader = new SAXReader();
 			Document document = reader.read(inputFile);
-			logger.info("reading file..");
+			logger.info("reading file....");
 			nodes = document.content();
 		} catch (Exception exc) {
 			System.out.println(exc.getMessage());
-			logger.error("unable to parse propFile");
+			logger.error("unable to parse property file");
 		}
 		return nodes;
 
