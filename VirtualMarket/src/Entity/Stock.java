@@ -1,7 +1,6 @@
 package Entity;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -38,12 +37,6 @@ public class Stock {
 	
 	@Column(name = "volumn")
 	private String volumn;
-	
-	
-	
-	
-	
-
 
 	public Stock(String name, String date, String open, String high, String low, String last, String close,
 			String totalTradedQty, String volumn) {

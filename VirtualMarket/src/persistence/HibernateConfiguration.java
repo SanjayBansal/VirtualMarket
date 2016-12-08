@@ -13,16 +13,13 @@ public class HibernateConfiguration {
 
 	public void initHibernate() {
 
-		 factory = new Configuration()
-				 .configure("hibernate.cfg.xml")
-				 .addAnnotatedClass(Stock.class)
+		factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Stock.class)
 				.buildSessionFactory();
 
 		// Create session
-		 	session = factory.getCurrentSession();
+		session = factory.getCurrentSession();
 	}
 
-	
 	public Session getSession() {
 		return session;
 	}
@@ -37,5 +34,22 @@ public class HibernateConfiguration {
 
 	public void setFactory(SessionFactory factory) {
 		this.factory = factory;
+	}
+
+	public void openSession() {
+		if (session.isOpen()) {
+			System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+			session.beginTransaction();
+		}
+
+	}
+
+	public void shutDownSession() {
+		if (session.isOpen()) {
+			session.getTransaction().commit();
+			factory.close();
+
+		}
+
 	}
 }
