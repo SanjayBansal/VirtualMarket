@@ -1,5 +1,7 @@
 package persistence;
 
+import java.io.File;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -10,11 +12,12 @@ public class HibernateConfiguration {
 
 	private Session session;
 	private SessionFactory factory;
+	File mappingDir = new File("resources/hibernateMapping");
 
-	public void initHibernate() {
-
-		factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Stock.class)
-				.buildSessionFactory();
+	public void initHibernate()  {
+		
+		
+		factory = new Configuration().configure("hibernate.cfg.xml").addDirectory(mappingDir).buildSessionFactory();
 
 		// Create session
 		session = factory.getCurrentSession();
@@ -38,7 +41,7 @@ public class HibernateConfiguration {
 
 	public void openSession() {
 		if (session.isOpen()) {
-			System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+			System.out.println("open session");
 			session.beginTransaction();
 		}
 
