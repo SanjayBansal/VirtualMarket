@@ -43,7 +43,7 @@ public class DataPersistor {
 			URL httpUrl = new URL(url);
 			List<Node> quandlResponse = parser.parseURL(httpUrl);
 			handler = new DatabaseHandler(prop.getPortfolio(), quandlResponse);
-			//if its not exits
+			//if store not exits
 			if ((handler.initDataBase())) {
 				handler.fillStore();
 			} else {
