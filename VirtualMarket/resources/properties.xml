@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-	<quandlKey>zar1auaezbovmzFow_kB</quandlKey>
-	<quandlURL>https://www.quandl.com/api/v3/datasets/NSE/</quandlURL>
-	<portfolios type="arrays">
-		<portfolio-name name="SBIN">
-			<start-date>2015-05-10</start-date>
-			<end-date>today</end-date>
-		</portfolio-name>
-		<portfolio-name name="MRPL">
-			<start-date>2015-05-11</start-date>
-			<end-date>today</end-date>
-		</portfolio-name>
-	</portfolios>
+	<historicalData enabale="false">
+		<quandlKey>zar1auaezbovmzFow_kB</quandlKey>
+		<quandlURL>https://www.quandl.com/api/v3/datasets/NSE/</quandlURL>
+		<portfolios type="arrays">
+			<portfolio-name name="SBIN">
+				<start-date>2015-05-10</start-date>
+				<end-date>today</end-date>
+			</portfolio-name>
+			<portfolio-name name="MRPL">
+				<start-date>2015-05-11</start-date>
+				<end-date>today</end-date>
+			</portfolio-name>
+		</portfolios>
+	</historicalData>
+	<realTimeData enabale="true">
+		<googleURL>http://finance.google.com/finance/info?client=ig&amp;q=NSE:</googleURL>
+		<portfolios type="arrays">
+			<portfolio-name name="SBIN">
+				<refreshInterval>2</refreshInterval>
+				<eod>true</eod>
+			</portfolio-name>
+			<portfolio-name name="MRPL">
+				<refreshInterval>2</refreshInterval>
+				<eod>true</eod>
+			</portfolio-name>
+		</portfolios>
+	</realTimeData>
 </dataset>

@@ -24,7 +24,7 @@ public class DataPersistor {
 	private DatabaseHandler handler =null;
 
 	public DataPersistor(Property prop) {
-		this.prop = prop;
+		this.prop = prop; 
 	}
 
 	public void start() {

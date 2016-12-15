@@ -1,53 +1,70 @@
 package playground;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.dom4j.DocumentException;
 import org.dom4j.Node;
 
 import Entity.Property;
-import Entity.Stock;
 import Parser.Parser;
 import historicalData.DataPersistor;
-import persistence.HibernateConfiguration;
+import realTimeData.RealTimeDataProcessor;
 
 public class demo {
 	final static Logger logger = Logger.getLogger(demo.class);
-	
-	
-	
+
 	public static Parser parser = new Parser();
-	public static Property prop= null;
+	public static Property prop = null;
 	public static DataPersistor dataPersistor = null;
-	
-	public static void main(String[] args)  {
+	public static RealTimeDataProcessor realTimeProc = null;
+	private static boolean isHistoricalEnabale = false;
+	private static boolean isRealTimeEnabale = false;
+
+	public static void main(String[] args) {
 		init();
 		start();
 	}
-		
+
 	private static void start() {
-		dataPersistor = new DataPersistor(prop);
-		dataPersistor.start();
+		if (isHistoricalEnabale) {
+			dataPersistor = new DataPersistor(prop);
+			dataPersistor.start();
+		}
+
+		if (isRealTimeEnabale) {
+			realTimeProc = new RealTimeDataProcessor(prop);
+			realTimeProc.start();
+		}
 	}
 
 	private static void init() {
-		try{
-		 prop = new Property();
-		List<Node> nodes = parser.parsePropertyFile("resources/properties.xml");
-			prop.setQuandlKey(nodes.get(0).selectSingleNode("quandlKey").getStringValue());
-			prop.setQuandlURL(nodes.get(0).selectSingleNode("quandlURL").getStringValue());
-			List<Node> portfolioList = nodes.get(0).selectNodes("./portfolios/portfolio-name");
-			prop.setPortfolio(portfolioList);
-			logger.info(prop.toString());	
-	}catch(Exception exc){
-		exc.printStackTrace();
-		logger.error("error while parsing property file : " +exc.getMessage() );
+		try {
+			prop = new Property();
+			List<Node> nodes = parser.parsePropertyFile("resources/properties.xml");
+			if (nodes.get(0).selectSingleNode("./historicalData").valueOf("@enabale").equalsIgnoreCase("true")) {
+				isHistoricalEnabale = true;
+				prop.setQuandlKey(nodes.get(0).selectSingleNode("historicalData/quandlKey").getStringValue());
+				prop.setQuandlURL(nodes.get(0).selectSingleNode("historicalData/quandlURL").getStringValue());
+				List<Node> portfolioList = nodes.get(0).selectNodes("./historicalData/portfolios/portfolio-name");
+				prop.setPortfolio(portfolioList);
+			} else {
+				logger.info("historical data is not enabled");
+			}
+			// realTime
+			if (nodes.get(0).selectSingleNode("./realTimeData").valueOf("@enabale").equalsIgnoreCase("true")) {
+				isRealTimeEnabale = true;
+				prop.setGoogleURL(nodes.get(0).selectSingleNode("realTimeData/googleURL").getStringValue());
+				List<Node> realTimePortfolio = nodes.get(0).selectNodes("./realTimeData/portfolios/portfolio-name");
+				prop.setRealTimeportfolio(realTimePortfolio);
+			} else {
+				logger.info("real time data is not enabled");
+			}
+			logger.info(prop.toString());
+		} catch (Exception exc) {
+			exc.printStackTrace();
+			logger.error("error while parsing property file : " + exc.getMessage());
+		}
 	}
-}
 }
 
 // try {
