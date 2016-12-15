@@ -4,7 +4,6 @@ import java.io.File;
 import java.net.URL;
 import java.util.List;
 
-import javax.security.sasl.SaslException;
 
 import org.apache.log4j.Logger;
 import org.dom4j.Document;

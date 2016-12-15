@@ -24,9 +24,12 @@ public class RealTimeDataProcessor {
 		logger.info("Starting real time data persisting");
 		URLS = getUrlList(prop);
 		logger.info("total portfolio : " + URLS.size());
-		for (String url : URLS) {
-			
-		}
+		parseAndSaveInMemory(URLS);
+	}
+
+	private void parseAndSaveInMemory(List<String> uRLS) {
+		Executor executor = new Executor(uRLS);
+		executor.executorTask();
 	}
 
 	private List<String> getUrlList(Property prop) {

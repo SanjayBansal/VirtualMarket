@@ -8,6 +8,7 @@ public class Property {
 	private String quandlKey;
 	private String quandlURL;
 	private List<Node> portfolio;
+	private static Property prop = null;
 
 	// real time data property
 	private List<Node> realTimeportfolio;
@@ -19,7 +20,9 @@ public class Property {
 	public void setRealTimeportfolio(List<Node> realTimeportfolio) {
 		this.realTimeportfolio = realTimeportfolio;
 	}
-
+	public  void setProperty(Property prop) {
+		this.prop = prop;
+	}
 	private String googleURL;
 	private String refreshInterval;
 	private String eod;

@@ -59,6 +59,7 @@ public class demo {
 			} else {
 				logger.info("real time data is not enabled");
 			}
+			prop.setProperty(prop);
 			logger.info(prop.toString());
 		} catch (Exception exc) {
 			exc.printStackTrace();
